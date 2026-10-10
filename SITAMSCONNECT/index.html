@@ -1,0 +1,2356 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  
+<title>Sitams Connect</title>  
+  
+<style>  
+* {  
+    box-sizing: border-box;  
+    margin: 0;  
+    padding: 0;  
+    font-family: Arial, sans-serif;  
+}  
+  
+body {  
+    background: #f4f7fb;  
+    color: #172033;  
+}  
+  
+/* ================= LOGIN ================= */  
+  
+#loginPage {  
+    min-height: 100vh;  
+    display: flex;  
+    justify-content: center;  
+    align-items: center;  
+    padding: 20px;  
+    background: linear-gradient(135deg, #172554, #2563eb);  
+}  
+  
+.login-box {  
+    width: 100%;  
+    max-width: 430px;  
+    background: white;  
+    padding: 35px;  
+    border-radius: 22px;  
+    box-shadow: 0 20px 50px rgba(0,0,0,0.25);  
+    text-align: center;  
+}  
+  
+.logo {  
+    font-size: 50px;  
+    margin-bottom: 10px;  
+}  
+  
+.login-box h1 {  
+    font-size: 30px;  
+    margin-bottom: 8px;  
+}  
+  
+.login-box p {  
+    color: #777;  
+    margin-bottom: 25px;  
+}  
+  
+.login-box input,  
+.login-box select {  
+    width: 100%;  
+    padding: 14px;  
+    margin: 7px 0;  
+    border: 1px solid #d9dce3;  
+    border-radius: 10px;  
+    font-size: 15px;  
+}  
+  
+.login-btn {  
+    width: 100%;  
+    padding: 14px;  
+    margin-top: 12px;  
+    border: none;  
+    border-radius: 10px;  
+    background: #2563eb;  
+    color: white;  
+    font-size: 16px;  
+    font-weight: bold;  
+    cursor: pointer;  
+}  
+  
+.login-btn:hover {  
+    background: #1d4ed8;  
+}  
+  
+.demo {  
+    margin-top: 18px;  
+    font-size: 13px;  
+    color: #777;  
+}  
+  
+/* ================= APP ================= */  
+  
+#app {  
+    display: none;  
+    min-height: 100vh;  
+}  
+  
+/* ================= SIDEBAR ================= */  
+  
+.sidebar {  
+    position: fixed;  
+    left: 0;  
+    top: 0;  
+    width: 245px;  
+    height: 100vh;  
+    background: #172554;  
+    color: white;  
+    padding: 25px 15px;  
+    overflow-y: auto;  
+}  
+  
+.sidebar-title {  
+    text-align: center;  
+    margin-bottom: 25px;  
+}  
+  
+.sidebar-title h2 {  
+    font-size: 23px;  
+}  
+  
+.sidebar-title p {  
+    font-size: 12px;  
+    opacity: 0.7;  
+    margin-top: 5px;  
+}  
+  
+.sidebar button {  
+    width: 100%;  
+    border: none;  
+    background: transparent;  
+    color: white;  
+    padding: 13px;  
+    margin: 4px 0;  
+    border-radius: 10px;  
+    text-align: left;  
+    cursor: pointer;  
+    font-size: 14px;  
+}  
+  
+.sidebar button:hover {  
+    background: rgba(255,255,255,0.12);  
+}  
+  
+.logout {  
+    margin-top: 25px !important;  
+    background: #dc2626 !important;  
+}  
+  
+/* ================= MAIN ================= */  
+  
+.main {  
+    margin-left: 245px;  
+    padding: 30px;  
+}  
+  
+.topbar {  
+    display: flex;  
+    justify-content: space-between;  
+    align-items: center;  
+    margin-bottom: 25px;  
+}  
+  
+.topbar h1 {  
+    font-size: 28px;  
+}  
+  
+.user-badge {  
+    background: white;  
+    padding: 10px 16px;  
+    border-radius: 12px;  
+    box-shadow: 0 3px 12px rgba(0,0,0,0.07);  
+}  
+  
+/* ================= SECTIONS ================= */  
+  
+.section {  
+    display: none;  
+}  
+  
+.section.active {  
+    display: block;  
+}  
+  
+/* ================= HERO ================= */  
+  
+.hero {  
+    background: linear-gradient(135deg, #2563eb, #172554);  
+    color: white;  
+    padding: 30px;  
+    border-radius: 20px;  
+    margin-bottom: 25px;  
+}  
+  
+.hero h2 {  
+    font-size: 28px;  
+    margin-bottom: 8px;  
+}  
+  
+.hero p {  
+    opacity: 0.9;  
+}  
+  
+/* ================= CARDS ================= */  
+  
+.cards {  
+    display: grid;  
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));  
+    gap: 18px;  
+}  
+  
+.card {  
+    background: white;  
+    padding: 22px;  
+    border-radius: 17px;  
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);  
+}  
+  
+.card-icon {  
+    font-size: 32px;  
+    margin-bottom: 12px;  
+}  
+  
+.card h3 {  
+    margin-bottom: 8px;  
+}  
+  
+.card p {  
+    color: #777;  
+    line-height: 1.5;  
+}  
+  
+.card button {  
+    margin-top: 15px;  
+}  
+  
+/* ================= BUTTONS ================= */  
+  
+.primary {  
+    background: #2563eb;  
+    color: white;  
+}  
+  
+.primary:hover {  
+    background: #1d4ed8;  
+}  
+  
+button {  
+    border: none;  
+    padding: 11px 16px;  
+    border-radius: 9px;  
+    font-weight: bold;  
+    cursor: pointer;  
+}  
+  
+/* ================= AI ================= */  
+  
+.ai-box {  
+    background: white;  
+    padding: 25px;  
+    border-radius: 18px;  
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);  
+}  
+  
+.ai-input {  
+    display: flex;  
+    gap: 10px;  
+    margin-top: 18px;  
+}  
+  
+.ai-input input {  
+    flex: 1;  
+    padding: 14px;  
+    border: 1px solid #ddd;  
+    border-radius: 10px;  
+}  
+  
+.ai-response {  
+    display: none;  
+    margin-top: 20px;  
+    background: #eef4ff;  
+    padding: 18px;  
+    border-radius: 12px;  
+    line-height: 1.6;  
+}  
+  
+/* ================= FORMS ================= */  
+  
+.form-box {  
+    background: white;  
+    padding: 25px;  
+    border-radius: 18px;  
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);  
+    max-width: 750px;  
+}  
+  
+.form-box label {  
+    display: block;  
+    margin-top: 12px;  
+    font-weight: bold;  
+}  
+  
+.form-box input,  
+.form-box textarea,  
+.form-box select {  
+    width: 100%;  
+    padding: 13px;  
+    margin-top: 7px;  
+    border: 1px solid #ddd;  
+    border-radius: 10px;  
+}  
+  
+.form-box textarea {  
+    min-height: 120px;  
+    resize: vertical;  
+}  
+  
+/* ================= TABLE ================= */  
+  
+.table-box {  
+    background: white;  
+    padding: 22px;  
+    border-radius: 18px;  
+    overflow-x: auto;  
+}  
+  
+table {  
+    width: 100%;  
+    border-collapse: collapse;  
+}  
+  
+th,  
+td {  
+    padding: 13px;  
+    border-bottom: 1px solid #eee;  
+    text-align: left;  
+}  
+  
+th {  
+    background: #f3f6fb;  
+}  
+  
+/* ================= STUDENTS ================= */  
+  
+.skill-grid {  
+    display: grid;  
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));  
+    gap: 18px;  
+}  
+  
+.student-card {  
+    background: white;  
+    padding: 20px;  
+    border-radius: 16px;  
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);  
+}  
+  
+.student-card h3 {  
+    margin-bottom: 5px;  
+}  
+  
+.student-card p {  
+    color: #777;  
+    margin-bottom: 10px;  
+}  
+  
+.tag {  
+    display: inline-block;  
+    background: #e8efff;  
+    color: #3158a8;  
+    padding: 6px 9px;  
+    border-radius: 20px;  
+    font-size: 12px;  
+    margin: 3px;  
+}  
+  
+/* ================= STATUS ================= */  
+  
+.status {  
+    padding: 6px 10px;  
+    border-radius: 20px;  
+    font-size: 12px;  
+    font-weight: bold;  
+}  
+  
+.pending {  
+    background: #fff2cc;  
+    color: #8a6500;  
+}  
+  
+.progress {  
+    background: #dcecff;  
+    color: #24558d;  
+}  
+  
+.resolved {  
+    background: #dcfce7;  
+    color: #166534;  
+}  
+  
+/* ================= MOBILE ================= */  
+  
+@media(max-width: 750px) {  
+  
+    .sidebar {  
+        position: relative;  
+        width: 100%;  
+        height: auto;  
+    }  
+  
+    .main {  
+        margin-left: 0;  
+        padding: 18px;  
+    }  
+  
+    .topbar {  
+        flex-direction: column;  
+        align-items: flex-start;  
+        gap: 10px;  
+    }  
+  
+    .ai-input {  
+        flex-direction: column;  
+    }  
+}  
+</style>  
+</head>  
+  
+  
+<body>  
+  
+<!-- =====================================================  
+     LOGIN PAGE  
+===================================================== -->  
+  
+<div id="loginPage">  
+  
+    <div class="login-box">  
+  
+        <div class="logo">🎓</div>  
+  
+        <h1>Sitams Connect</h1>  
+  
+        <p>Your intelligent college companion</p>  
+  
+        <input  
+            type="text"  
+            id="loginUser"  
+            placeholder="Username / Roll Number"  
+        >  
+  
+        <input  
+            type="password"  
+            id="loginPassword"  
+            placeholder="Password"  
+        >  
+  
+        <select id="loginRole">  
+  
+            <option value="student">  
+                Student  
+            </option>  
+  
+            <option value="faculty">  
+                Faculty  
+            </option>  
+  
+            <option value="admin">  
+                Admin  
+            </option>  
+  
+        </select>  
+  
+        <button  
+            class="login-btn"  
+            onclick="login()"
+        >  
+            Login  
+        </button>  
+  
+        <div class="demo">  
+  
+            <b>Demo Login</b><br>  
+  
+            Student: student / 1234<br>  
+  
+            Admin: admin / admin123  
+  
+        </div>  
+  
+    </div>  
+  
+</div>  
+  
+  
+<!-- =====================================================  
+     MAIN APPLICATION  
+===================================================== -->  
+  
+<div id="app">  
+  
+    <!-- SIDEBAR -->  
+  
+    <div class="sidebar">  
+  
+        <div class="sidebar-title">  
+  
+            <h2>🎓 Sitams Connect</h2>  
+  
+            <p>Smart Campus Platform</p>  
+  
+        </div>  
+  
+  
+        <button onclick="showSection('dashboard')">  
+            🏠 Dashboard  
+        </button>  
+  
+        <button onclick="showSection('assistant')">  
+            🤖 AI Assistant  
+        </button>  
+  
+        <button onclick="showSection('complaints')">  
+            🛠️ Report Problem  
+        </button>  
+  
+        <button onclick="showSection('myComplaints')">  
+            🎫 My Complaints  
+        </button>  
+  
+        <button onclick="showSection('skills')">  
+            🤝 Find Students  
+        </button>  
+  
+        <button onclick="showSection('clubs')">  
+            🏆 Clubs & Activities  
+        </button>  
+
+        <button
+    id="feedbackButton"
+    onclick="showSection('feedback')">
+    📝 Submit Feedback
+</button>
+
+<button
+    id="feedbackReviewButton"
+    onclick="showSection('feedbackReview')"
+    style="display:none;">
+    📋 Review Feedback
+</button>
+    
+  <button onclick="showSection('knowledge')">  
+            🏫 College Information  
+        </button>  
+  
+        <button  
+            id="adminButton"  
+            onclick="showSection('admin')"  
+            style="display:none;"  
+        >  
+            📊 Admin Dashboard  
+        </button>  
+  
+        <button  
+            class="logout"  
+            onclick="logout()"  
+        >  
+            🚪 Logout  
+        </button>  
+  
+    </div>  
+  
+  
+    <!-- MAIN CONTENT -->  
+  
+    <div class="main">  
+  
+        <div class="topbar">  
+  
+            <h1 id="pageTitle">  
+                Dashboard  
+            </h1>  
+  
+            <div class="user-badge">  
+  
+                👤 <span id="currentUser">  
+                    Student  
+                </span>  
+  
+            </div>  
+  
+        </div>  
+  
+  
+        <!-- =================================================  
+             DASHBOARD  
+        ================================================= -->  
+  
+        <div  
+            id="dashboard"  
+            class="section active"  
+        >  
+  
+            <div class="hero">  
+  
+                <h2>  
+                    Welcome to Sitams Connect 👋  
+                </h2>  
+                <div class="tell-anything-card">
+    <div class="tell-icon">💬</div>
+
+    <div class="tell-content">
+        <h2>Tell Us Anything</h2>
+
+        <p>
+            Ask anything about your college and Sitams Connect
+            will help you find the right solution.
+        </p>
+
+        <div class="tell-input-box">
+            <input
+                type="text"
+                id="tellAnythingInput"
+                placeholder="e.g. I have a college-related question. Can you help me?"
+            />
+
+            <button onclick="handleTellAnything()">
+                ✨ Find Solution
+            </button>
+        </div>
+
+        <div id="tellAnythingResult" class="tell-result"></div>
+    </div>
+</div>
+  
+                <p>  
+                    One intelligent platform for students,  
+                    faculty and college administration.  
+                </p>  
+  
+            </div>  
+  
+  
+            <div class="cards">  
+  
+                <div class="card">  
+  
+                    <div class="card-icon">  
+                        🤖  
+                    </div>  
+  
+                    <h3>  
+                        AI Assistant  
+                    </h3>  
+  
+                    <p>  
+                        Ask questions about your college  
+                        and get instant guidance.  
+                    </p>  
+  
+                </div>  
+  
+  
+                <div class="card">  
+  
+                    <div class="card-icon">  
+                        🛠️  
+                    </div>  
+  
+                    <h3>  
+                        Smart Complaints  
+                    </h3>  
+  
+                    <p>  
+                        Report campus problems and  
+                        track their progress.  
+                    </p>  
+  
+                </div>  
+  
+  
+                <div class="card">  
+  
+                    <div class="card-icon">  
+                        🤝  
+                    </div>  
+  
+                    <h3>  
+                        Find Students  
+                    </h3>  
+  
+                    <p>  
+                        Find students with skills that  
+                        match your project needs.  
+                    </p>  
+  
+                </div>  
+  
+  
+                <div class="card">  
+  
+                    <div class="card-icon">  
+                        🏆  
+                    </div>  
+  
+                    <h3>  
+                        Clubs  
+                    </h3>  
+  
+                    <p>  
+                        Discover college clubs,  
+                        activities and events.  
+                    </p>  
+  
+                </div>  
+  
+            </div>  
+  
+        </div>  
+  
+  
+        <!-- =================================================  
+             AI ASSISTANT  
+        ================================================= -->  
+  
+        <div  
+            id="assistant"  
+            class="section"  
+        >  
+  
+            <div class="ai-box">  
+  
+                <h2>  
+                    🤖 Sitams Connect AI  
+                </h2>  
+  
+                <p style="margin-top:8px;color:#777;">  
+  
+                    Ask anything about your college.  
+  
+                </p>  
+  
+  
+                <div class="ai-input">  
+  
+                    <input  
+                        type="text"  
+                        id="aiQuestion"  
+                        placeholder="Example: How can I report a broken fan?"  
+                    >  
+  
+                    <button  
+                        class="primary"  
+                        onclick="askAI()"  
+                    >  
+                        Ask  
+                    </button>  
+  
+                </div>  
+  
+  
+                <div  
+                    id="aiResponse"  
+                    class="ai-response"  
+                >  
+                </div>  
+  
+            </div>  
+  
+        </div>  
+  
+  
+        <!-- =================================================  
+             REPORT PROBLEM  
+        ================================================= -->  
+  
+        <div  
+            id="complaints"  
+            class="section"  
+        >  
+  
+            <div class="form-box">  
+  
+                <h2>  
+                    🛠️ Report a Campus Problem  
+                </h2>  
+  
+  
+                <label>  
+                    Problem Category  
+                </label>  
+  
+                <select id="complaintCategory">  
+  
+                    <option>  
+                        Maintenance  
+                    </option>  
+  
+                    <option>  
+                        Wi-Fi / Internet  
+                    </option>  
+  
+                    <option>  
+                        Classroom  
+                    </option>  
+  
+                    <option>  
+                        Hostel  
+                    </option>  
+  
+                    <option>  
+                        Transport  
+                    </option>  
+  
+                    <option>  
+                        Cleanliness  
+                    </option>  
+  
+                    <option>  
+                        Security  
+                    </option>  
+  
+                    <option>  
+                        Other  
+                    </option>  
+  
+                </select>  
+  
+  
+                <label>  
+                    Location  
+                </label>  
+  
+                <input  
+                    type="text"  
+                    id="complaintLocation"  
+                    placeholder="Example: Block B, Room 204"  
+                >  
+  
+  
+                <label>  
+                    Describe the Problem  
+                </label>  
+  
+                <textarea  
+                    id="complaintDescription"  
+                    placeholder="Explain the problem..."  
+                ></textarea>  
+  
+  
+                <button  
+                    class="primary"  
+                    onclick="submitComplaint()"  
+                >  
+                    Submit Complaint  
+                </button>  
+  
+            </div>  
+  
+        </div>  
+  
+  
+        <!-- =================================================  
+             MY COMPLAINTS  
+        ================================================= -->  
+  
+        <div  
+            id="myComplaints"  
+            class="section"  
+        >  
+  
+            <div class="table-box">  
+  
+                <h2>  
+                    🎫 My Complaints  
+                </h2>  
+  
+                <br>  
+  
+                <table>  
+  
+                    <thead>  
+  
+                        <tr>  
+  
+                            <th>  
+                                Ticket  
+                            </th>  
+  
+                            <th>  
+                                Category  
+                            </th>  
+  
+                            <th>  
+                                Location  
+                            </th>  
+  
+                            <th>  
+                                Status  
+                            </th>  
+  
+                        </tr>  
+  
+                    </thead>  
+  
+                    <tbody id="complaintTable">  
+  
+                    </tbody>  
+  
+                </table>  
+  
+            </div>  
+  
+        </div>  
+  
+  
+        <!-- =================================================  
+             FIND STUDENTS  
+        ================================================= -->  
+  
+        <div  
+            id="skills"  
+            class="section"  
+        >  
+  
+            <h2>  
+                🤝 Find Students by Skills  
+            </h2>  
+  
+            <br>  
+  
+  
+            <div class="form-box">  
+  
+                <input  
+                    type="text"  
+                    id="skillSearch"  
+                    placeholder="Search skill e.g. Python"  
+                    onkeyup="searchSkills()"  
+                >  
+  
+            </div>  
+  
+            <br>  
+  
+  
+            <div  
+                class="skill-grid"  
+                id="studentGrid"  
+            >  
+            </div>  
+  
+        </div>  
+  
+  
+        <!-- =================================================  
+             CLUBS  
+        ================================================= -->  
+  
+        <div  
+            id="clubs"  
+            class="section"  
+        >  
+  
+            <h2>  
+                🏆 Clubs & Activities  
+            </h2>  
+  
+            <br>  
+  
+  
+            <div class="cards">  
+  
+  
+                <div class="card">  
+  
+                    <div class="card-icon">  
+                        💻  
+                    </div>  
+  
+                    <h3>  
+                        Coding Club  
+                    </h3>  
+  
+                    <p>  
+                        Programming, projects,  
+                        hackathons and technology.  
+                    </p>  
+  
+                    <button  
+                        class="primary"  
+                        onclick="joinClub('Coding Club')"  
+                    >  
+                        Join  
+                    </button>  
+  
+                </div>  
+  
+  
+                <div class="card">  
+  
+                    <div class="card-icon">  
+                        🎭  
+                    </div>  
+  
+                    <h3>  
+                        Cultural Club  
+                    </h3>  
+  
+                    <p>  
+                        Dance, music, drama and  
+                        cultural activities.  
+                    </p>  
+  
+                    <button  
+                        class="primary"  
+                        onclick="joinClub('Cultural Club')"  
+                    >  
+                        Join  
+                    </button>  
+  
+                </div>  
+  
+  
+                <div class="card">  
+  
+                    <div class="card-icon">  
+                        📸  
+                    </div>  
+  
+                    <h3>  
+                        Photography Club  
+                    </h3>  
+  
+                    <p>  
+                        Photography and creative media.  
+                    </p>  
+  
+                    <button  
+                        class="primary"  
+                        onclick="joinClub('Photography Club')"  
+                    >  
+                        Join  
+                    </button>  
+  
+                </div>  
+  
+  
+            </div>  
+  
+        </div>  
+  
+  
+        <!-- =================================================  
+             COLLEGE KNOWLEDGE  
+        ================================================= -->  
+  
+        <div  
+            id="knowledge"  
+            class="section"  
+        >  
+  
+            <div class="hero">  
+  
+                <h2>  
+                    🏫 College Knowledge  
+                </h2>  
+  
+                <p>  
+                    Your real college information  
+                    will be added here.  
+                </p>  
+  
+            </div>  
+  
+  
+            <div class="cards">  
+  
+                <div class="card">  
+  
+                    <div class="card-icon">  
+                        🏢  
+                    </div>  
+  
+                    <h3>  
+                        Departments  
+                    </h3>  
+  
+                    <p>  
+                        College departments and  
+                        their information.  
+                    </p>  
+  
+                </div>  
+  
+  
+                <div class="card">  
+  
+                    <div class="card-icon">  
+                        👨‍🏫  
+                    </div>  
+  
+                    <h3>  
+                        Faculty  
+                    </h3>  
+  
+                    <p>  
+                        Faculty members and  
+                        contact information.  
+                    </p>  
+  
+                </div>  
+  
+  
+                <div class="card">  
+  
+                    <div class="card-icon">  
+                        📞  
+                    </div>  
+  
+                    <h3>  
+                        Important Contacts  
+                    </h3>  
+  
+                    <p>  
+                        College offices and  
+                        emergency contacts.  
+                    </p>  
+  
+                </div>  
+  
+  
+                <div class="card">  
+  
+                    <div class="card-icon">  
+                        📅  
+                    </div>  
+  
+                    <h3>  
+                        Academic Information  
+                    </h3>  
+  
+                    <p>  
+                        Academic rules,  
+                        schedules and important dates.  
+                    </p>  
+  
+                </div>  
+  
+            </div>  
+  
+        </div>  
+  
+  
+        <!-- FEEDBACK SECTION -->
+
+<div id="feedback" class="section">
+
+    <div class="hero">
+        <h2>📝 Student Feedback</h2>
+        <p>Share your suggestions to help improve our college.</p>
+    </div>
+
+    <div class="card feedback-card">
+
+        <h3>Choose a Feedback Category</h3>
+
+        <label for="feedbackCategory">Category</label>
+
+        <select id="feedbackCategory">
+            <option value="">-- Select Category --</option>
+            <option value="Canteen">🍽️ Canteen Feedback</option>
+            <option value="Hostel">🏠 Hostel Feedback</option>
+            <option value="Academics">📚 Academics Feedback</option>
+            <option value="Faculty">👨‍🏫 Faculty Feedback</option>
+            <option value="Transport">🚌 Transport Feedback</option>
+            <option value="Campus & Facilities">🏫 Campus & Facilities</option>
+            <option value="General">💬 General Feedback</option>
+        </select>
+
+        <label for="feedbackRating">Your Rating</label>
+
+        <select id="feedbackRating">
+            <option value="">-- Select Rating --</option>
+            <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
+            <option value="4">⭐⭐⭐⭐ Good</option>
+            <option value="3">⭐⭐⭐ Average</option>
+            <option value="2">⭐⭐ Poor</option>
+            <option value="1">⭐ Very Poor</option>
+        </select>
+
+        <label for="feedbackMessage">Your Feedback</label>
+
+        <textarea
+ id="feedbackMessage"
+            rows="5"
+            placeholder="Write your feedback or suggestions here..."
+        ></textarea>
+
+        <button onclick="submitFeedback()">
+            📩 Submit Feedback
+        </button>
+
+        <p id="feedbackStatus"></p>
+
+        
+    </div>
+
+</div>
+<!-- FEEDBACK REVIEW FOR ADMIN AND FACULTY -->
+<div id="feedbackReview" class="section">
+
+    <div class="hero">
+        <h2>📋 Feedback Review</h2>
+        <p>Read student feedback anonymously.</p>
+    </div>
+
+    <div class="table-box">
+        <table>
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Rating</th>
+                    <th>Feedback</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody id="feedbackReviewTable"></tbody>
+        </table>
+    </div>
+
+</div>
+
+<!-- END FEEDBACK SECTION -->
+        <!-- =================================================  
+             ADMIN DASHBOARD  
+        ================================================= -->  
+  
+        <div  
+            id="admin"  
+            class="section"  
+        >  
+  
+            <div class="hero">  
+  
+                <h2>  
+                    📊 Admin Dashboard  
+                </h2>  
+  
+                <p>  
+                    Monitor student requests and  
+                    campus problems.  
+                </p>  
+
+                <div class="admin-add-student-card">
+
+    <h2>👨‍🎓 Add Student</h2>
+    <p>Create a student account for Sitams Connect.</p>
+
+    <div class="student-form">
+
+        <input
+            type="text"
+            id="newStudentName"
+            placeholder="Student Name"
+        >
+
+        <input
+            type="text"
+            id="newStudentRoll"
+            placeholder="Roll Number"
+        >
+
+        <input
+            type="text"
+            id="newStudentDepartment"
+            placeholder="Department (CSE, ECE, Civil...)"
+        >
+
+        <input
+            type="text"
+            id="newStudentYear"
+            placeholder="Year (1st, 2nd, 3rd, 4th)"
+        >
+
+        <input
+            type="password"
+            id="newStudentPassword"
+            placeholder="Temporary Password"
+        >
+
+        <button onclick="addStudent()">
+            ➕ Add Student
+        </button>
+
+    </div>
+
+    <div id="addStudentMessage"></div>
+
+</div>
+  
+            </div>  
+  
+  
+            <div class="cards">  
+  
+                <div class="card">  
+  
+                    <div class="card-icon">  
+                        👥  
+                    </div>  
+  
+                    <h3>  
+                        Students  
+                    </h3>  
+  
+                    <p>
+    <span id="registeredStudentCount">0</span> registered students
+</p>
+  
+                </div>  
+  
+  
+                <div class="card">  
+  
+                    <div class="card-icon">  
+                        🎫  
+                    </div>  
+  
+                    <h3>  
+                        Complaints  
+                    </h3>  
+  
+                    <p id="adminComplaintCount">  
+                        0 complaints  
+                    </p>  
+  
+                </div>  
+  
+  
+                <div class="card">  
+  
+                    <div class="card-icon">  
+                        🤝  
+                    </div>  
+  
+                    <h3>  
+                        Student Skills  
+                    </h3>  
+  
+                    <p>  
+                        Student skill database  
+                    </p>  
+  
+                </div>  
+  
+  
+                <div class="card">  
+  
+                    <div class="card-icon">  
+                        🏆  
+                    </div>  
+  
+                    <h3>  
+                        Clubs  
+                    </h3>  
+  
+                    <p>  
+                        Manage student clubs  
+                    </p>  
+  
+                </div>  
+  
+            </div>  
+  
+  
+            <br>  
+  
+  
+            <div class="table-box">  
+  
+                <h2>  
+                    Recent Complaints  
+                </h2>  
+  
+                <br>  
+  
+                <table>  
+  
+                    <thead>  
+  
+                        <tr>  
+  
+                            <th>  
+                                Ticket  
+                            </th>  
+  
+                            <th>  
+                                Student  
+                            </th>  
+  
+                            <th>  
+                                Category  
+                            </th>  
+  
+                            <th>  
+                                Location  
+                            </th>  
+  
+                            <th>  
+                                Status  
+                            </th>  
+  
+                        </tr>  
+  
+                    </thead>  
+  
+                    <tbody id="adminComplaintTable">  
+  
+                    </tbody>  
+  
+                </table>  
+  
+            </div>  
+  
+        </div>  
+  
+  
+    </div>  
+  
+</div>  
+  
+  
+<script>  
+  
+/* =====================================================  
+   DATA  
+===================================================== */  
+  
+let currentUser = "";  
+let currentRole = "";
+  
+let complaints =  
+    JSON.parse(  
+        localStorage.getItem("sitamsComplaints")  
+    ) || [];  
+  
+  
+const students = [  
+  
+    {  
+        name: "Arjun Kumar",  
+        department: "CSE",  
+        year: "2nd Year",  
+        skills: ["Python", "Java", "Web Development"]  
+    },  
+  
+    {  
+        name: "Priya Reddy",  
+        department: "ECE",  
+        year: "2nd Year",  
+        skills: ["Arduino", "IoT", "C++"]  
+    },  
+  
+    {  
+        name: "Rahul Varma",  
+        department: "CSE",  
+        year: "3rd Year",  
+        skills: ["AI", "Machine Learning", "Python"]  
+    },  
+  
+    {  
+        name: "Sneha Devi",  
+        department: "EEE",  
+        year: "1st Year",  
+        skills: ["Design", "Canva", "Photography"]  
+    }  
+  
+];  
+  
+  
+/* =====================================================  
+   LOGIN  
+===================================================== */  
+function login() {
+    const username = document.getElementById("loginUser").value.trim();
+    const password = document.getElementById("loginPassword").value;
+    const role = document.getElementById("loginRole").value;
+
+    if (!username || !password) {
+        alert("Please enter your username and password.");
+        return;
+    }
+
+    let authenticatedUser = "";
+
+    if (role === "admin" && username === "admin" && password === "admin123") {
+        authenticatedUser = "Admin";
+    } else if (role === "student" && username === "student" && password === "1234") {
+        authenticatedUser = "Student";
+    } else if (role === "faculty" && username === "faculty" && password === "faculty123") {
+        authenticatedUser = "Faculty";
+    } else if (role === "student") {
+        const students = JSON.parse(localStorage.getItem("sitamsStudents") || "[]");
+        const registeredStudent = students.find(student => {
+            const roll = student.roll || student.rollNumber || student.username || "";
+            return roll.toLowerCase() === username.toLowerCase() &&
+                student.password === password;
+        });
+
+        if (registeredStudent) {
+            authenticatedUser = registeredStudent.name || username;
+        }
+    }
+
+    if (!authenticatedUser) {
+        alert("Invalid login. Please check your username, password and role.");
+        return;
+    }
+
+    currentUser = authenticatedUser;
+    currentRole = role;
+    document.getElementById("adminButton").style.display =
+        role === "admin" ? "block" : "none";
+        document.getElementById("feedbackButton").style.display =
+    role === "student" ? "block" : "none";
+
+document.getElementById("feedbackReviewButton").style.display =
+    (role === "admin" || role === "faculty") ? "block" : "none";
+    openApp();
+    showSection("dashboard");
+}
+    
+       
+      
+    /* =====================================================  
+   OPEN APP  
+===================================================== */  
+  
+function openApp() {  
+  
+    document.getElementById("loginPage")  
+        .style.display = "none";  
+  
+    document.getElementById("app")  
+        .style.display = "block";  
+  
+    document.getElementById("currentUser")  
+        .innerText = currentUser;  
+  
+    loadComplaints();  
+  
+    loadStudents();  
+  
+    updateAdmin();  
+  
+}  
+  
+  
+/* =====================================================  
+   LOGOUT  
+===================================================== */  
+  
+function logout() {  
+  
+    currentUser = "";  
+  
+    document.getElementById("app")  
+        .style.display = "none";  
+  
+    document.getElementById("loginPage")  
+        .style.display = "flex";  
+  
+    document.getElementById("loginUser")  
+        .value = "";  
+  
+    document.getElementById("loginPassword")  
+        .value = "";  
+  
+}  
+  
+  
+/* =====================================================  
+   SECTION NAVIGATION  
+===================================================== */  
+  
+function showSection(sectionId) {  
+  
+    const sections =  
+        document.querySelectorAll(".section");  
+  
+    sections.forEach(section => {  
+  
+        section.classList.remove("active");  
+  
+    });  
+  
+  
+    document.getElementById(sectionId)  
+        .classList.add("active");  
+  
+  
+    const titles = {  
+  
+        dashboard: "Dashboard",  
+  
+        assistant: "AI Assistant",  
+  
+        complaints: "Report Problem",  
+  
+        myComplaints: "My Complaints",  
+  
+        skills: "Find Students",  
+  
+        clubs: "Clubs & Activities",  
+
+        feedback: "Student Feedback",
+  
+        knowledge: "College Information",  
+  
+        admin: "Admin Dashboard"  
+  
+    };  
+  
+  
+    document.getElementById("pageTitle")  
+        .innerText =  
+        titles[sectionId] || "Sitams Connect";  
+        if (sectionId === "feedbackReview") {
+            loadFeedbackReview();
+
+        }
+  
+}  
+  
+  
+/* =====================================================  
+   AI ASSISTANT  
+===================================================== */  
+  
+function handleTellAnything() {
+
+    const input = document.getElementById("tellAnythingInput");
+    const result = document.getElementById("tellAnythingResult");
+
+    const question = input.value.toLowerCase().trim();
+
+    if (question === "") {
+        result.innerHTML = "Please enter your question.";
+        return;
+    }
+
+    if (
+        question.includes("club") ||
+        question.includes("activity") ||
+        question.includes("event") ||
+        question.includes("join")
+    ) {
+        result.innerHTML = "✨ I can help you with clubs and activities.";
+        showSection("clubs");
+        return;
+    }
+
+    if (
+        question.includes("student") ||
+        question.includes("python") ||
+        question.includes("java") ||
+        question.includes("project") ||
+        question.includes("team")
+    ) {
+        result.innerHTML = "✨ Let's find students with the skills you need.";
+        showSection("skills");
+        return;
+    }
+
+    if (
+        question.includes("problem") ||
+        question.includes("complaint") ||
+        question.includes("issue") ||
+        question.includes("report")
+    ) {
+        result.innerHTML = "✨ I'll take you to the problem reporting section.";
+        showSection("complaints");
+        return;
+    }
+
+    if (
+        question.includes("hod") ||
+        question.includes("office") ||
+        question.includes("contact") ||
+        question.includes("department") ||
+        question.includes("college")
+    ) {
+        result.innerHTML = "✨ I'll show you the college information.";
+        showSection("knowledge");
+        return;
+    }
+
+    result.innerHTML =
+        "🤖 I'm still learning. Please try asking about clubs, students, projects, complaints, departments or college information.";
+}
+function askAI() {  
+  
+    const question =  
+        document.getElementById("aiQuestion")  
+        .value  
+        .toLowerCase()  
+        .trim();  
+  
+  
+    const response =  
+        document.getElementById("aiResponse");  
+  
+  
+    if (!question) {  
+  
+        alert("Please type a question.");  
+  
+        return;  
+    }  
+  
+  
+    let answer = "";  
+  
+  
+    if (  
+        question.includes("complaint") ||  
+        question.includes("problem") ||  
+        question.includes("broken")  
+    ) {  
+  
+        answer =  
+            "🛠️ You can report a campus problem using the " +  
+            "<b>Report Problem</b> section. " +  
+            "Choose the category, enter the location and " +  
+            "describe the problem. You will receive a ticket number.";  
+  
+    }  
+  
+    else if (  
+        question.includes("club") ||  
+        question.includes("activity")  
+    ) {  
+  
+        answer =  
+            "🏆 You can explore available student clubs " +  
+            "from the <b>Clubs & Activities</b> section.";  
+  
+    }  
+  
+    else if (  
+        question.includes("student") ||  
+        question.includes("team") ||  
+        question.includes("python") ||  
+        question.includes("java")  
+    ) {  
+  
+        answer =  
+            "🤝 Use <b>Find Students</b> to search for students " +  
+            "based on skills such as Python, Java, AI, Arduino " +  
+            "and Web Development.";  
+  
+    }  
+  
+    else if (  
+        question.includes("contact") ||  
+        question.includes("office")  
+    ) {  
+  
+        answer =  
+            "📞 College contact information will be available " +  
+            "in the <b>College Information</b> section.";  
+  
+    }  
+  
+    else if (  
+        question.includes("attendance")  
+    ) {  
+  
+        answer =  
+            "📚 Attendance information can be connected to " +  
+            "your college's attendance system in a future version.";  
+  
+    }  
+  
+    else {  
+  
+        answer =  
+            "🤖 I understand your question, but the college " +  
+            "knowledge database is still being prepared. " +  
+            "Once your real college information is added, " +  
+            "I will be able to provide more specific answers.";  
+  
+    }  
+  
+  
+    response.innerHTML = answer;  
+  
+    response.style.display = "block";  
+}  
+  
+  
+/* =====================================================  
+   COMPLAINT SYSTEM  
+===================================================== */  
+  
+function submitComplaint() {  
+  
+    const category =  
+        document.getElementById("complaintCategory")  
+        .value;  
+  
+    const location =  
+        document.getElementById("complaintLocation")  
+        .value  
+        .trim();  
+  
+    const description =  
+        document.getElementById("complaintDescription")  
+        .value  
+        .trim();  
+  
+  
+    if (!location || !description) {  
+  
+        alert(  
+            "Please enter the location and describe the problem."  
+        );  
+  
+        return;  
+    }  
+  
+  
+    const ticket =  
+        "SC" +  
+        Date.now().toString().slice(-6);  
+  
+  
+    const complaint = {  
+  
+        ticket: ticket,  
+  
+        student: currentUser,  
+  
+        category: category,  
+  
+        location: location,  
+  
+        description: description,  
+  
+        status: "Pending"  
+  
+    };  
+  
+  
+    complaints.push(complaint);  
+  
+  
+    localStorage.setItem(  
+        "sitamsComplaints",  
+        JSON.stringify(complaints)  
+    );  
+  
+  
+    document.getElementById("complaintLocation")  
+        .value = "";  
+  
+    document.getElementById("complaintDescription")  
+        .value = "";  
+  
+  
+    alert(  
+        "Complaint submitted successfully!\n\n" +  
+        "Your Ticket Number: " +  
+        ticket  
+    );  
+  
+  
+    loadComplaints();  
+  
+    updateAdmin();  
+  
+    showSection("myComplaints");  
+  
+}  
+  
+  
+/* =====================================================  
+   LOAD STUDENT COMPLAINTS  
+===================================================== */  
+  
+function loadComplaints() {  
+  
+    const table =  
+        document.getElementById("complaintTable");  
+  
+  
+    table.innerHTML = "";  
+  
+  
+    const myComplaints =  
+        complaints.filter(  
+            complaint =>  
+                complaint.student === currentUser  
+        );  
+  
+  
+    if (myComplaints.length === 0) {  
+  
+        table.innerHTML =  
+            `<tr>  
+                <td colspan="4">  
+                    No complaints found.  
+                </td>  
+            </tr>`;  
+  
+        return;  
+    }  
+  
+  
+    myComplaints.forEach(complaint => {  
+  
+        let statusClass = "pending";  
+  
+        if (complaint.status === "In Progress")  
+            statusClass = "progress";  
+  
+        if (complaint.status === "Resolved")  
+            statusClass = "resolved";  
+  
+  
+        table.innerHTML += `  
+  
+            <tr>  
+  
+                <td>  
+                    ${complaint.ticket}  
+                </td>  
+  
+                <td>  
+                    ${complaint.category}  
+                </td>  
+  
+                <td>  
+                    ${complaint.location}  
+                </td>  
+  
+                <td>  
+                    <span class="status ${statusClass}">  
+                        ${complaint.status}  
+                    </span>  
+                </td>  
+  
+            </tr>  
+  
+        `;  
+  
+    });  
+  
+}  
+  
+  
+/* =====================================================  
+   STUDENT SKILLS  
+===================================================== */  
+  
+function loadStudents() {  
+  
+    const grid =  
+        document.getElementById("studentGrid");  
+  
+  
+    grid.innerHTML = "";  
+  
+  
+    students.forEach(student => {  
+  
+        grid.innerHTML += createStudentCard(student);  
+  
+    });  
+  
+}  
+  
+  
+function createStudentCard(student) {  
+  
+    return `  
+  
+        <div class="student-card">  
+  
+            <h3>  
+                ${student.name}  
+            </h3>  
+  
+            <p>  
+                ${student.department}  
+                •  
+                ${student.year}  
+            </p>  
+  
+            <div>  
+  
+                ${student.skills.map(skill =>  
+                    `<span class="tag">${skill}</span>`  
+                ).join("")}  
+  
+            </div>  
+  
+            <button  
+                class="primary"  
+                onclick="connectStudent('${student.name}')"  
+            >  
+                Connect  
+            </button>  
+  
+        </div>  
+  
+    `;  
+  
+}  
+  
+  
+/* =====================================================  
+   SEARCH STUDENTS  
+===================================================== */  
+  
+function searchSkills() {  
+  
+    const search =  
+        document.getElementById("skillSearch")  
+        .value  
+        .toLowerCase()  
+        .trim();  
+  
+  
+    const grid =  
+        document.getElementById("studentGrid");  
+  
+  
+    const filtered =  
+        students.filter(student =>  
+  
+            student.name.toLowerCase()  
+                .includes(search)  
+  
+            ||  
+  
+            student.department.toLowerCase()  
+                .includes(search)  
+  
+            ||  
+  
+            student.skills.some(skill =>  
+                skill.toLowerCase().includes(search)  
+            )  
+  
+        );  
+  
+  
+    grid.innerHTML = "";  
+  
+  
+    if (filtered.length === 0) {  
+  
+        grid.innerHTML =  
+            "<p>No matching students found.</p>";  
+  
+        return;  
+    }  
+  
+  
+    filtered.forEach(student => {  
+  
+        grid.innerHTML += createStudentCard(student);  
+  
+    });  
+  
+}  
+  
+  
+/* =====================================================  
+   CONNECT STUDENT  
+===================================================== */  
+  
+function connectStudent(name) {  
+  
+    alert(  
+        "Connection request sent to " +  
+        name +  
+        "!"  
+    );  
+  
+}  
+  
+  
+/* =====================================================  
+   CLUBS  
+===================================================== */  
+  
+function joinClub(club) {  
+  
+    alert(  
+        "You have requested to join the " +  
+        club +  
+        "!"  
+    );  
+  
+}  
+  
+  
+/* =====================================================  
+   ADMIN  
+===================================================== */  
+  
+function updateRegisteredStudentCount() {
+    const students = JSON.parse(
+        localStorage.getItem("sitamsStudents")
+    ) || [];
+
+    const countElement = document.getElementById(
+        "registeredStudentCount"
+    );
+
+    if (countElement) {
+        countElement.textContent = students.length;
+    }
+}
+
+function addStudent() {
+
+    const name = document.getElementById("newStudentName").value.trim();
+    const roll = document.getElementById("newStudentRoll").value.trim();
+    const department = document.getElementById("newStudentDepartment").value.trim();
+    const year = document.getElementById("newStudentYear").value.trim();
+    const password = document.getElementById("newStudentPassword").value.trim();
+
+    const message = document.getElementById("addStudentMessage");
+
+    if (!name || !roll || !department || !year || !password) {
+        message.innerHTML = "⚠️ Please fill in all fields.";
+        return;
+    }
+
+    let students = JSON.parse(localStorage.getItem("sitamsStudents")) || [];
+
+    const existingStudent = students.find(
+        student => student.roll.toLowerCase() === roll.toLowerCase()
+    );
+
+    if (existingStudent) {
+        message.innerHTML = "⚠️ A student with this roll number already exists.";
+        return;
+    }
+
+    const newStudent = {
+        name: name,
+        roll: roll,
+        department: department,
+        year: year,
+        password: password
+    };
+
+    students.push(newStudent);
+
+    localStorage.setItem("sitamsStudents", JSON.stringify(students));
+    updateRegisteredStudentCount()
+
+    message.innerHTML = "✅ Student account created successfully!";
+
+    document.getElementById("newStudentName").value = "";
+    document.getElementById("newStudentRoll").value = "";
+    document.getElementById("newStudentDepartment").value = "";
+    document.getElementById("newStudentYear").value = "";
+    document.getElementById("newStudentPassword").value = "";
+}
+function updateAdmin() { 
+     updateRegisteredStudentCount();
+  
+    const count =  
+        document.getElementById("adminComplaintCount");  
+  
+  
+    if (count) {  
+  
+        count.innerText =  
+            complaints.length +  
+            " complaints";  
+  
+    }  
+  
+  
+    const table =  
+        document.getElementById("adminComplaintTable");  
+  
+  
+    if (!table) return;  
+  
+  
+    table.innerHTML = "";  
+  
+  
+    if (complaints.length === 0) {  
+  
+        table.innerHTML =  
+            `<tr>  
+                <td colspan="5">  
+                    No complaints yet.  
+                </td>  
+            </tr>`;  
+  
+        return;  
+    }  
+  
+  
+    complaints.slice().reverse().forEach(complaint => {  
+  
+        let statusClass = "pending";  
+  
+        if (complaint.status === "In Progress")  
+            statusClass = "progress";  
+  
+        if (complaint.status === "Resolved")  
+            statusClass = "resolved";  
+  
+  
+        table.innerHTML += `  
+  
+            <tr>  
+  
+                <td>  
+                    ${complaint.ticket}  
+                </td>  
+  
+                <td>  
+                    ${complaint.student}  
+                </td>  
+  
+                <td>  
+                    ${complaint.category}  
+                </td>  
+  
+                <td>  
+                    ${complaint.location}  
+                </td>  
+  
+                <td>  
+                    <span class="status ${statusClass}">  
+                        ${complaint.status}  
+                    </span>  
+                </td>  
+  
+            </tr>  
+  
+        `;  
+  
+    });  
+  
+}  
+  
+  
+/* =====================================================  
+   ENTER KEY FOR AI  
+===================================================== */  
+  
+document  
+    .getElementById("aiQuestion")  
+    .addEventListener("keydown", function(event) {  
+  
+        if (event.key === "Enter") {  
+  
+            askAI();  
+  
+        }  
+  
+    });  
+  
+function submitFeedback() {
+    const category = document.getElementById("feedbackCategory").value;
+    const rating = document.getElementById("feedbackRating").value;
+    const message = document.getElementById("feedbackMessage").value.trim();
+    const status = document.getElementById("feedbackStatus");
+
+    if (!category || !rating || !message) {
+        status.textContent = "Please complete all fields.";
+        status.style.color = "red";
+        return;
+    }
+
+    const feedbackList = JSON.parse(
+        localStorage.getItem("sitamsFeedback") || "[]"
+    );
+
+    feedbackList.push({
+        category: category,
+        rating: Number(rating),
+        message: message,
+        submittedBy: currentUser,
+        submittedAt: new Date().toISOString()
+    });
+
+    localStorage.setItem(
+        "sitamsFeedback",
+        JSON.stringify(feedbackList)
+    );
+
+    status.textContent = "✅ Thank you! Your feedback has been saved.";
+    status.style.color = "green";
+
+    document.getElementById("feedbackCategory").value = "";
+    document.getElementById("feedbackRating").value = "";
+    document.getElementById("feedbackMessage").value = "";
+    function loadFeedbackReview() {
+    const table = document.getElementById("feedbackReviewTable");
+
+    if (currentRole !== "admin" && currentRole !== "faculty") {
+        alert("You are not allowed to view this page.");
+        showSection("dashboard");
+        return;
+    }
+
+    const feedbackList = JSON.parse(
+        localStorage.getItem("sitamsFeedback") || "[]"
+    );
+
+    table.replaceChildren();
+
+    if (feedbackList.length === 0) {
+        const row = table.insertRow();
+        const cell = row.insertCell();
+        cell.colSpan = 4;
+        cell.textContent = "No feedback has been submitted yet.";
+        return;
+    }
+
+    feedbackList.slice().reverse().forEach(item => {
+        const row = table.insertRow();
+
+        row.insertCell().textContent = item.category;
+        row.insertCell().textContent = "⭐".repeat(
+            Math.max(0, Math.min(5, Number(item.rating) || 0))
+        );
+        row.insertCell().textContent = item.message;
+
+        const date = item.submittedAt
+            ? new Date(item.submittedAt).toLocaleDateString()
+            : "—";
+
+        row.insertCell().textContent = date;
+    });
+}
+}
+
+
+    </script>  
+  
+</body>  
+</html>
